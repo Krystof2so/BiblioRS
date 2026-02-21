@@ -1,0 +1,5 @@
+# Fichiers générés par Rust/Cargo
+target/
+
+# Fichiers de cache et de dépendances
+Cargo.lock

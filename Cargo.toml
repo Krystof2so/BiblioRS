@@ -1,0 +1,9 @@
+[package]
+name = "rs_biblio"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+chrono = "0.4"
+heck = "0.4.0"
+lazy_static = "1.5.0"
