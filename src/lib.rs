@@ -4,3 +4,5 @@
 pub mod all_struct;
 pub mod check_input;
 pub mod input;
+
+pub use input::user_input::ask_string as ask_s;

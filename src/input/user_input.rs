@@ -1,5 +1,4 @@
 // Contient les fonctions de saisies de l'utilisateur
-
 use heck::ToTitleCase; // https://docs.rs/heck/latest/heck/
 use std::io; // https://doc.rust-lang.org/std/
 

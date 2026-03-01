@@ -1,5 +1,6 @@
 use crate::check_input::book::{ask_pages, ask_year};
 use crate::input::user_input::ask_string;
+pub use crate::input::user_input::ask_string as ask_s;
 
 #[derive(Debug)]
 pub struct Book {
@@ -7,7 +8,7 @@ pub struct Book {
     pub author_first_name: String,
     pub title: String,
     pub pub_year: i32,
-    pub nb_pages: String,
+    nb_pages: String,
 }
 
 impl Book {
@@ -15,7 +16,7 @@ impl Book {
         my_string.chars().take(4).collect::<String>().to_uppercase()
     }
 
-    fn id_book(&self) -> String {
+    fn _id_book(&self) -> String {
         format!(
             "{}{}{}{}",
             Self::only_4_chars(&self.author_name),
@@ -32,7 +33,7 @@ impl Book {
             self.author_first_name,
             self.author_name.to_uppercase(),
             self.pub_year,
-            self.id_book()
+            self._id_book()
         )
     }
 
