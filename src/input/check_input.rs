@@ -1,9 +1,8 @@
 // Fonctions de validation
 
+//use crate::input::user_input::user_entry as u_entry;
 use chrono::{Datelike, Local}; // https://docs.rs/chrono/latest/chrono/
 use lazy_static::lazy_static; // https://docs.rs/lazy_static/latest/lazy_static/
-
-use crate::input::user_input::user_entry;
 
 // ***********************************
 // * DONNEES STATIQUES ET CONSTANTES *
@@ -29,7 +28,7 @@ static ERR_NB_PAGES: &str = "Le nombre de pages ne peut être supérieur à 9999
 pub fn ask_year(question: &str) -> i32 {
     // validation de saisie d'une année de publication
     loop {
-        let year = user_entry(question, true);
+        let year = super::user_input::user_entry(question, true);
         // On tente de convertir la saisie en i32
         match year.parse::<i32>() {
             // Gestion par match plus concise (tous les cas de saisie prévus)
@@ -44,7 +43,7 @@ pub fn ask_year(question: &str) -> i32 {
 pub fn ask_pages(question: &str) -> String {
     // validation nombre de pages
     loop {
-        let nb_pages = user_entry(question, false);
+        let nb_pages = super::user_input::user_entry(question, false);
         match nb_pages.parse::<u32>() {
             Ok(nb_pages) => {
                 if nb_pages <= 10000 {

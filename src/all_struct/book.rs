@@ -1,13 +1,12 @@
-use crate::check_input::book::{ask_pages, ask_year};
-use crate::input::user_input::ask_string;
-pub use crate::input::user_input::ask_string as ask_s;
+use crate::input::check_input::{ask_pages as ask_p, ask_year as ask_y};
+use crate::input::user_input::ask_string as ask_s;
 
 #[derive(Debug)]
 pub struct Book {
-    pub author_name: String,
-    pub author_first_name: String,
-    pub title: String,
-    pub pub_year: i32,
+    author_name: String,
+    author_first_name: String,
+    title: String,
+    pub_year: i32,
     nb_pages: String,
 }
 
@@ -16,7 +15,7 @@ impl Book {
         my_string.chars().take(4).collect::<String>().to_uppercase()
     }
 
-    fn _id_book(&self) -> String {
+    fn id_book(&self) -> String {
         format!(
             "{}{}{}{}",
             Self::only_4_chars(&self.author_name),
@@ -33,17 +32,17 @@ impl Book {
             self.author_first_name,
             self.author_name.to_uppercase(),
             self.pub_year,
-            self._id_book()
+            self.id_book()
         )
     }
 
     pub fn new_book() -> Book {
         Book {
-            author_name: ask_string("Nom de l'auteur : ", true),
-            author_first_name: ask_string("Prénom de l'auteur : ", false),
-            title: ask_string("Titre du livre : ", true),
-            pub_year: ask_year("Année de publication : "),
-            nb_pages: ask_pages("Nombre de pages : "),
+            author_name: ask_s("Nom de l'auteur : ", true),
+            author_first_name: ask_s("Prénom de l'auteur : ", false),
+            title: ask_s("Titre du livre : ", true),
+            pub_year: ask_y("Année de publication : "),
+            nb_pages: ask_p("Nombre de pages : "),
         }
     }
 }
