@@ -43,7 +43,7 @@ pub fn ask_pages(question: &str) -> String {
     // validation nombre de pages
     loop {
         let nb_pages = super::user_input::user_entry(question, false);
-        match nb_pages.parse::<u32>() {
+        match nb_pages.parse::<i32>() {
             Ok(nb_pages) => {
                 if nb_pages <= 10000 {
                     return format!("{:04}", nb_pages);

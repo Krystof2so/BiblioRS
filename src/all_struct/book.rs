@@ -1,7 +1,7 @@
 use crate::input::check_input::{ask_pages as ask_p, ask_year as ask_y};
 use crate::input::user_input::ask_string as ask_s;
 
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 pub struct Book {
     pub author_name: String,
     pub author_first_name: String,
@@ -42,6 +42,18 @@ impl Book {
             self.author_name.to_uppercase(),
             self.pub_year,
             self.id_book()
+        )
+    }
+
+    pub fn display2(&self) -> String {
+        format!(
+            "Clé : {}\nAuteur : {} {}\nTitre : {}\nAnnée : {}\nPages : {}\n",
+            self.id_book(),
+            self.author_name,
+            self.author_first_name,
+            self.title,
+            self.pub_year,
+            self.nb_pages.trim_start_matches('0').to_string()
         )
     }
 

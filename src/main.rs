@@ -7,9 +7,10 @@ mod input; // Module contenant la logique de saisie utilisateur
 
 // Import des structures utilisées
 use all_struct::{book::Book, library::Library};
+use input::check_input::ask_year;
 
 fn main() {
-    let mut library = Library::new(); // Initialise une bibliothèque vide
+    let mut my_library = Library::new(); // Initialise une bibliothèque vide
 
     // Boucle principale pour ajouter des livres
     loop {
@@ -28,11 +29,14 @@ fn main() {
         // Affiche les informations du livre nouvellement créé
         println!("{}", book.display());
         // Ajoute le livre à la bibliothèque
-        library.add_book(book);
+        my_library.add_book(book);
         println!("Enregistré dans la bibliothèque");
     }
 
-    // Affiche l'intégralité des livres présents dans la bibliothèque
-    println!("\n--- Bibliothèque complète ---");
-    library.display_all();
+    // Affichages
+    println!("\n--- Bibliothèque complète (par date de parution) ---");
+    my_library.sort_by_year(); // Tri par dates de parution
+    my_library.display_all(); // Affichage complet
+    // Affichage selon une année de référence
+    my_library.display_from_year(ask_year("\nLivres parus après l'année : "));
 }

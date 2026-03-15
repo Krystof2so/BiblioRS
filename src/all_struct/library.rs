@@ -1,9 +1,9 @@
 use super::book::Book; // Import de la structure `Book` depuis le module parent
 
 /// Structure représentant une bibliothèque de livres.
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 pub struct Library {
-    books: Vec<Book>, // Vecteur stockant les instances de `Book`
+    pub books: Vec<Book>, // Vecteur stockant les instances de `Book`
 }
 
 /// Implémentation des méthodes pour la structure `Library`.
@@ -22,17 +22,24 @@ impl Library {
     /// Affiche chaque livre
     pub fn display_all(&self) {
         for book in &self.books {
-            println!(
-                "Clé : {}\nAuteur : {} {}\nTitre : {}\nAnnée : {}\nPages : {}\n---",
-                book.id_book(),
-                book.author_name,
-                book.author_first_name,
-                book.title,
-                book.pub_year,
-                // Nombre de pages, sans les zéros initiaux
-                // Cf. https://doc.rust-lang.org/std/primitive.str.html#method.trim_start_matches
-                book.nb_pages.trim_start_matches('0').to_string()
-            );
+            println!("{}", Book::display2(book));
+        }
+    }
+
+    pub fn sort_by_year(&mut self) {
+        self.books.sort_by_key(|book| book.pub_year);
+    }
+
+    pub fn display_from_year(&mut self, ref_year: i32) {
+        self.sort_by_year();
+        let books_from_year: Vec<&Book> = self
+            .books
+            .iter()
+            .filter(|book| book.pub_year >= ref_year)
+            .collect();
+        print!("\n--- Liste des livres parus à partir de {ref_year} ---\n");
+        for book in &books_from_year {
+            println!("{}", Book::display2(book));
         }
     }
 }
