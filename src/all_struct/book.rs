@@ -11,8 +11,18 @@ pub struct Book {
 }
 
 impl Book {
+    /// Pour retourner 4 caractères en uppercase
     fn only_4_chars(my_string: &str) -> String {
-        my_string.chars().take(4).collect::<String>().to_uppercase()
+        let mut four_chars: String = my_string
+            .chars() // Itère sur la chaîne de caractères
+            .take(4) // Prend les 4 premiers caractères (ou tous si moins de 4)
+            .map(|c| if c.is_whitespace() { 'X' } else { c }) // Remplace les espaces par 'X'
+            .collect(); // Rassemble la chaîne en nouvelle String
+        // Si la nouvelle String fait moins de 4 caractères, ajout de 'X' pour  obtenir 4 caractères
+        while four_chars.len() < 4 {
+            four_chars.push('X');
+        }
+        four_chars.to_uppercase()
     }
 
     pub fn id_book(&self) -> String {
