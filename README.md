@@ -22,5 +22,4 @@ Petit projet "exercice" dans le cadre d'un apprentissage du langage **RUST**.
 ### Méthodes
 
 - [Suppression de préfixes](https://doc.rust-lang.org/std/primitive.str.html#method.trim_start_matches) dans une chaîne de caractères
-- Méthode [`.map`](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.map)
-- Méthode [`.is_whitespace`](https://doc.rust-lang.org/std/primitive.char.html#method.is_whitespace)
+- [Changer un caractère](https://doc.rust-lang.org/std/string/struct.String.html#method.replace) en autre caractère
