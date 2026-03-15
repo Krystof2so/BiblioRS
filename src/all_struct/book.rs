@@ -3,11 +3,11 @@ use crate::input::user_input::ask_string as ask_s;
 
 #[derive(Debug)]
 pub struct Book {
-    author_name: String,
-    author_first_name: String,
-    title: String,
-    pub_year: i32,
-    nb_pages: String,
+    pub author_name: String,
+    pub author_first_name: String,
+    pub title: String,
+    pub pub_year: i32,
+    pub nb_pages: String,
 }
 
 impl Book {
@@ -15,7 +15,7 @@ impl Book {
         my_string.chars().take(4).collect::<String>().to_uppercase()
     }
 
-    fn id_book(&self) -> String {
+    pub fn id_book(&self) -> String {
         format!(
             "{}{}{}{}",
             Self::only_4_chars(&self.author_name),
@@ -38,9 +38,9 @@ impl Book {
 
     pub fn new_book() -> Book {
         Book {
-            author_name: ask_s("Nom de l'auteur : ", true),
-            author_first_name: ask_s("Prénom de l'auteur : ", false),
-            title: ask_s("Titre du livre : ", true),
+            author_name: ask_s("Nom de l'auteur : ", true, true),
+            author_first_name: ask_s("Prénom de l'auteur : ", false, false),
+            title: ask_s("Titre du livre : ", true, false),
             pub_year: ask_y("Année de publication : "),
             nb_pages: ask_p("Nombre de pages : "),
         }

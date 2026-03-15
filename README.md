@@ -12,3 +12,5 @@ Petit projet "exercice" dans le cadre d'un apprentissage du langage **RUST**.
 - [heck](https://docs.rs/heck/latest/heck/)
 - [std](https://doc.rust-lang.org/std/)
 - Les [constantes](https://doc.rust-lang.org/rust-by-example/custom_types/constants.html)
+- [Suppression de préfixes](https://doc.rust-lang.org/std/primitive.str.html#method.trim_start_matches) dans une chaîne de caractères
+- Les [Vecteurs](https://doc.rust-lang.org/std/vec/struct.Vec.html)

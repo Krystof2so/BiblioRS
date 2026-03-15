@@ -1,6 +1,5 @@
 // Fonctions de validation
 
-//use crate::input::user_input::user_entry as u_entry;
 use chrono::{Datelike, Local}; // https://docs.rs/chrono/latest/chrono/
 use lazy_static::lazy_static; // https://docs.rs/lazy_static/latest/lazy_static/
 

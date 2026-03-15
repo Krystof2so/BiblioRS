@@ -30,8 +30,12 @@ pub fn user_entry(question: &str, check: bool) -> String {
     }
 }
 
-pub fn ask_string(question: &str, check: bool) -> String {
+pub fn ask_string(question: &str, check: bool, upper_c: bool) -> String {
     // Pour demander une chaîne de caractères
     // privilégier la référence comme paramètre de fonction (plus performant)
-    user_entry(question, check).to_title_case()
+    let response = user_entry(question, check);
+    match upper_c {
+        true => response.to_uppercase(),
+        false => response.to_title_case(),
+    }
 }
