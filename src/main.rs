@@ -39,4 +39,5 @@ fn main() {
     my_library.display_all(); // Affichage complet
     // Affichage selon une année de référence
     my_library.display_from_year(ask_year("\nLivres parus après l'année : "));
+    my_library.instances_by_author(); // Nombres de références pour un auteur donné 
 }

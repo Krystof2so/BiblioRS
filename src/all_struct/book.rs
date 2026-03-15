@@ -1,7 +1,7 @@
 use crate::input::check_input::{ask_pages as ask_p, ask_year as ask_y};
 use crate::input::user_input::ask_string as ask_s;
 
-#[derive(Debug, Clone)]
+#[derive(Debug)]
 pub struct Book {
     pub author_name: String,
     pub author_first_name: String,

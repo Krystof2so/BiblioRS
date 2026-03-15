@@ -26,3 +26,4 @@ Petit projet "exercice" dans le cadre d'un apprentissage du langage **RUST**.
 - [Changer un caractère](https://doc.rust-lang.org/std/string/struct.String.html#method.replace) en autre caractère
 - [Filtrage](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.filter) sur une itération
 - [Tri](https://doc.rust-lang.org/std/primitive.slice.html#method.sort_by_key) à l'aide d'une clé
+- [Compter sur des itérations](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.count)
