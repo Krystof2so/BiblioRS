@@ -35,6 +35,7 @@ impl Book {
     }
 
     pub fn display(&self) -> String {
+        println!("{:?}", self);
         format!(
             "{}, de {} {}, a été publié en {}\nClé d'identification : {}",
             self.title,

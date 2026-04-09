@@ -1,5 +1,4 @@
 // Contient les fonctions de saisies de l'utilisateur
-use heck::ToTitleCase; // https://docs.rs/heck/latest/heck/
 use std::io; // https://doc.rust-lang.org/std/
 
 // **************
@@ -13,6 +12,24 @@ static EMPTY_FIELD: &str = "Ce champ ne peut être vide";
 // ************
 // * FONCIONS *
 // ************
+fn to_title_case_unicode(s: &str) -> String {
+    s.split_whitespace() // Découpe la chaîne à chaque espace (ou suite d'espaces) et retourne un itérateur de tranches (&str)
+        .map(|word| {
+            // Closure pour chaque mot
+            let mut chars = word.chars(); // Crée un itérateur sur les scalaires unicodes du mot
+            match chars.next() {
+                // Consomme uniquement le 1er caractère
+                None => String::new(), // mot vide
+                Some(first) => {
+                    let upper: String = first.to_uppercase().collect();
+                    upper + chars.as_str() // 1er lettre en majuscule + suite de la tranche
+                }
+            }
+        })
+        .collect::<Vec<String>>() // Collecte chaque mot en vecteur de Strings
+        .join(" ") // Formation de la String finale transformée
+}
+
 pub fn user_entry(question: &str, check: bool) -> String {
     // Pour demander une saisie utilisateur
     loop {
@@ -36,6 +53,6 @@ pub fn ask_string(question: &str, check: bool, upper_c: bool) -> String {
     let response = user_entry(question, check);
     match upper_c {
         true => response.to_uppercase(),
-        false => response.to_title_case(),
+        false => to_title_case_unicode(&response),
     }
 }
