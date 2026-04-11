@@ -1,5 +1,9 @@
-// Point d'entrée lib
+//! Point d'entrée de la bibliothèque `rs_biblio`.
+//!
+//! - [`models`] : structures de données métier (`Book`, `Library`)
+//! - [`input`]  : saisie et validation des données utilisateur
+//! - [`utils`]  : fonctions utilitaires partagées
 
-// Déclaration des modules principaux
-pub mod all_struct;
 pub mod input;
+pub mod models;
+pub mod utils;
