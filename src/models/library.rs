@@ -1,26 +1,30 @@
 //! Définition de la structure [`Library`] et de ses méthodes.
 
 use super::book::Book;
+use std::collections::HashMap;
 
-/// Collection de livres.
+/// Collection de livres indexée par leur identifiant unique.
 ///
-/// Le champ `books` est public pour permettre une éventuelle itération
-/// ou affichage depuis l'extérieur du module.
+/// La clé est l'identifiant généré par [`Book::id_book`].
 #[derive(Debug)]
 pub struct Library {
-    pub books: Vec<Book>,
+    pub books: HashMap<String, Book>,
 }
 
 impl Library {
     /// Crée une bibliothèque vide.
     pub fn new() -> Self {
-        Library { books: Vec::new() } // Initialise un vecteur vide pour stocker les livres
+        Library {
+            books: HashMap::new(),
+        }
     }
 
     /// Ajoute un livre à la bibliothèque.
     ///
+    /// La clé est générée automatiquement via [`Book::id_book`].
     /// Prend possession du `book` (transfert de propriété, pas de copie).
     pub fn add_book(&mut self, book: Book) {
-        self.books.push(book);
+        let id = book.id_book();
+        self.books.insert(id, book);
     }
 }

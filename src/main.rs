@@ -26,5 +26,8 @@ fn main() {
 
         my_library.add_book(book);
         println!("Enregistré dans la bibliothèque");
+
+        // LIGNES DE TEST
+        println!("\n\nContenu de la structure 'Library':\n{:?}", my_library);
     }
 }
