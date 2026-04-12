@@ -12,9 +12,7 @@ pub struct Book {
     pub author_first_name: String,
     pub title: String,
     pub pub_year: i32,
-    /// Stocké sur 4 chiffres avec zéros de remplissage (ex. `"0042"`),
-    /// ce format étant utilisé dans la clé générée par [`Book::id_book`].
-    pub nb_pages: String,
+    pub nb_pages: u32,
 }
 
 impl Book {
@@ -44,15 +42,11 @@ impl Book {
             Self::only_4_chars(&self.author_name),
             self.pub_year,
             Self::only_4_chars(&self.title),
-            self.nb_pages,
+            format!("{:04}", self.nb_pages),
         )
     }
 
     /// Retourne une représentation lisible du livre.
-    ///
-    /// Le nombre de pages est affiché sans zéros de remplissage
-    /// (`"0042"` → `"42"`), contrairement au format interne utilisé
-    /// dans [`Book::id_book`].
     pub fn display(&self) -> String {
         format!(
             "Clé : {}\nAuteur : {} {}\nTitre : {}\nAnnée : {}\nPages : {}\n",
@@ -61,7 +55,7 @@ impl Book {
             self.author_first_name,
             self.title,
             self.pub_year,
-            self.nb_pages.trim_start_matches('0').to_string()
+            self.nb_pages
         )
     }
 }

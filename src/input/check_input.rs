@@ -45,22 +45,20 @@ pub fn ask_year(question: &str) -> i32 {
 
 /// Demande et valide un nombre de pages.
 ///
-/// Retourne le nombre formaté sur 4 chiffres (`"0042"`), ce format étant
-/// utilisé pour construire l'identifiant du livre (cf. `Book::id_book`).
-/// Un champ vide est accepté et traité comme `"0000"`.
+/// Un champ vide est accepté et traité comme 0.
 /// La valeur maximale acceptée est 9999.
-pub fn ask_pages(question: &str) -> String {
+pub fn ask_pages(question: &str) -> u32 {
     loop {
         let nb_pages = super::user_input::user_entry(question, false);
-        match nb_pages.parse::<i32>() {
+        match nb_pages.parse::<u32>() {
             Ok(nb_pages) => {
                 if nb_pages <= 10000 {
-                    return format!("{:04}", nb_pages);
+                    return nb_pages;
                 } else {
                     println!("{ERR_NB_PAGES}");
                 }
             }
-            Err(_) if nb_pages.is_empty() => return String::from("0000"),
+            Err(_) if nb_pages.is_empty() => return 0,
             Err(_) => println!("{NO_NUMBER}"),
         }
     }
