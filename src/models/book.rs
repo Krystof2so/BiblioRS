@@ -38,11 +38,11 @@ impl Book {
     /// Exemple : `"HUGO1862MISE0823"`
     pub fn id_book(&self) -> String {
         format!(
-            "{}{}{}{}",
-            Self::only_4_chars(&self.author_name),
-            self.pub_year,
+            "{}{}{}{:04}",                         // string
+            Self::only_4_chars(&self.author_name), // String
+            self.pub_year,                         // i32
             Self::only_4_chars(&self.title),
-            format!("{:04}", self.nb_pages),
+            self.nb_pages, // u32
         )
     }
 
